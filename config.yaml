@@ -1,0 +1,46 @@
+# GW info
+gateway:
+  ip: "192.168.1.1"
+  base_url: "http://192.168.1.1"
+  web_user: admin
+  web_pass: admin
+  ssh_user: g70xxx
+  ssh_pass: xxxx
+
+# Cấu hình kiểm thử
+settings:
+  timeout: 30000
+  headless: false
+  slow_mo: 500
+
+# Data model paths (TR-181)
+tr181_paths:
+  ssid_2g: "Device.WiFi.SSID.1."
+  dhcp_server: "Device.DHCPv4.Server."
+  ssid_5g: ""
+
+
+#################### ACS CWMP
+genieacs:
+  api_url: "http://your-genieacs-ip:7557"
+  device_id: "7CD95C-Generic-DeviceID" # ID của Gateway trên ACS
+  user: "admin"
+  pass: "admin_pass"
+
+test_data:
+  param_path: "Device.WiFi.SSID.1.SSID"
+  new_value: "GenieACS_Test_SSID"
+
+test_add_object:
+  parent_path: "Device.DHCPv4.Server.Pool.1.StaticAddress."
+  # Sau khi add, ta sẽ set giá trị cho instance mới này
+  params:
+    Chaddr: "AA:BB:CC:DD:EE:FF"
+    Yiaddr: "192.168.1.50"
+
+
+#################### LCM
+lcm_logs:
+  install_start: "LCM: InstallDu started"
+  install_success: "LCM: InstallDu successful"
+  usp_notify: "USP_EVENT: Device.SoftwareModules.ExecutionUnit" # Event TR-369
